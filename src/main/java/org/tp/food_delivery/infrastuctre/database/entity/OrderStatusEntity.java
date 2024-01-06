@@ -9,7 +9,7 @@ import java.time.OffsetDateTime;
 @Getter
 @Setter
 @EqualsAndHashCode(of = "orderStatusId")
-@ToString(of = {"orderStatusId", "productName", "quantityOfProduct", "active"})
+@ToString(of = {"orderStatusId", "productName", "quantityOfProduct", "orderStatus"})
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,15 +26,17 @@ public class OrderStatusEntity {
     private BigDecimal quantityOfProduct;
     @Column(name = "date_of_order")
     private OffsetDateTime dateOfOrder;
-    @Column(name = "active")
-    private Boolean active;
+    @Column(name = "order_status")
+    private String orderStatus;
 
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "orderStatus")
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "restaurant_id")
     private RestaurantEntity restaurant;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "orderStatus")
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id")
     private CustomerEntity customer;
+
 
 }

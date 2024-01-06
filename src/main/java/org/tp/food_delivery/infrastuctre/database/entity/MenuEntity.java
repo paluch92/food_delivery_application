@@ -25,11 +25,11 @@ public class MenuEntity {
     @Column(name = "price")
     private BigDecimal price;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_of_product_id")
+    @OneToMany(mappedBy = "menu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<CategoryOfProductEntity> categoryOfProduct;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "menu")
+
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "menu")
     private RestaurantEntity restaurant;
 
 

@@ -30,12 +30,9 @@ public class RestaurantEntity {
     @JoinColumn(name = "address_id")
     private AddressEntity address;
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "menu_id")
     private MenuEntity menu;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private AllRestaurantsEntity restaurants;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private OrderStatusEntity orderStatus;
+
+
 
 }

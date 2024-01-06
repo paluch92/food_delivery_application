@@ -20,8 +20,9 @@ public class CategoryOfProductEntity {
     @Column(name = "category_name")
     private String categoryName;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private MenuEntity menu;
+
 
 
 }

@@ -1,43 +1,67 @@
 package org.tp.food_delivery.buisness;
 
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.tp.food_delivery.buisness.dao.CustomerDAO;
-import org.tp.food_delivery.domain.Customer;
-import org.tp.food_delivery.domain.exception.NotFoundException;
+import org.tp.food_delivery.api.dto.CustomerDTO;
+import org.tp.food_delivery.infrastuctre.database.entity.CustomerEntity;
+import org.tp.food_delivery.infrastuctre.database.repository.jpa.CustomerJpaRepository;
 
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class CustomerService {
 
-    private final CustomerDAO customerDAO;
-    private final Customer customer;
+    private final CustomerJpaRepository customerJpaRepository;
+    private final ModelMapper modelMapper;
+
 
     @Transactional
-    public Customer findCustomer(Integer customerId) {
-        Optional<Customer> customer = customerDAO.findById(customerId);
-        if (customer.isEmpty()) {
-            throw new NotFoundException("Couldn't find customer by Id: [%s]".formatted(customerId));
+    public CustomerDTO createCustomer(CustomerDTO customerDTO) {
+        CustomerEntity customer = convertToEntity(customerDTO);
+        CustomerEntity createdCustomer = customerJpaRepository.save(customer);
+        return convertToDto(createdCustomer);
+    }
+
+    public List<CustomerDTO> getAllCustomers() {
+        List<CustomerEntity> customerEntity = customerJpaRepository.findAll();
+        return customerEntity.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    private CustomerDTO convertToDto(CustomerEntity customerEntity) {
+        return modelMapper.map(customerEntity, CustomerDTO.class);
+    }
+
+    private CustomerEntity convertToEntity(CustomerDTO customerDTO) {
+        return modelMapper.map(customerDTO, CustomerEntity.class);
+    }
+
+    @Transactional
+    public void deleteCustomer(Integer customerId) {
+        customerJpaRepository.deleteById(customerId);
+    }
+
+    public CustomerDTO updateCustomer(Integer customerId, CustomerDTO updatedCustomerDTO) {
+        CustomerEntity existingCustomer = customerJpaRepository.findById(customerId).orElse(null);
+
+        if (existingCustomer != null) {
+            modelMapper.map(updatedCustomerDTO, existingCustomer);
+            customerJpaRepository.save(existingCustomer);
+            return convertToDto(existingCustomer);
         }
-        return customer.get();
+
+        return null;
     }
 
     @Transactional
-    public Customer saveCustomer(Customer NewCustomer) {
-        return null;
-
-    }
-
-    Customer deleteCustomer(Customer customer){
-        return null;
-
-    }
-    @Transactional
-    public void saveOrder(Customer customer) {
-        return;
+    public CustomerDTO findCustomer(Integer customerId) {
+        CustomerEntity customerEntity = customerJpaRepository.findById(customerId).orElse(null);
+        return (customerEntity != null ? convertToDto(customerEntity) : null);
     }
 
 

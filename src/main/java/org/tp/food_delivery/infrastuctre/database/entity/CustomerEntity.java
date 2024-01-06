@@ -30,7 +30,7 @@ public class CustomerEntity {
     @JoinColumn(name = "address_id")
     private AddressEntity address;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private OrderStatusEntity orderStatus;
 
 }

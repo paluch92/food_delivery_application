@@ -14,5 +14,5 @@ public class OrderStatusDTO {
     private RestaurantDTO restaurant;
     private CustomerDTO customer;
     private String productName;
-    private Boolean active;
+    private String orderStatus;
 }

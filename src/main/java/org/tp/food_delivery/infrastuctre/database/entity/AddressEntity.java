@@ -26,9 +26,9 @@ public class AddressEntity {
     @Column(name = "address")
     private String address;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "address")
-    private CustomerEntity customer;
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "address")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "address")
     private RestaurantEntity restaurant;
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "address")
+    private CustomerEntity customer;
 
 }

@@ -6,14 +6,14 @@ import lombok.*;
 @Value
 @Builder
 @EqualsAndHashCode(of = "orderStatusId")
-@ToString(of = {"orderStatusId", "restaurant", "customer", "active"})
+@ToString(of = {"orderStatusId", "restaurant", "customer", "orderStatus"})
+@AllArgsConstructor
 public class OrderStatus {
 
     Integer orderStatusId;
     Restaurant restaurant;
     Customer customer;
     String productName;
-    Boolean active;
     String customerEmail;
     String customerName;
     String customerSurname;
