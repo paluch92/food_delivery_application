@@ -33,5 +33,7 @@ public class RestaurantEntity {
     @JoinColumn(name = "menu_id")
     private MenuEntity menu;
 
+//    @OneToMany(fetch = FetchType.LAZY)
+//    private OrderStatusEntity orderStatus;
 
 }

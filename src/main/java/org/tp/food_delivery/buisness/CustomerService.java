@@ -26,12 +26,12 @@ public class CustomerService {
         customerDAO.saveCustomer(customer);
     }
 
-    public Customer findById(Integer customerId) {
+    public Optional<Customer> findById(Integer customerId) {
         Optional<Customer> customer = customerDAO.findById(customerId);
         if (customer.isEmpty()) {
             throw new NotFoundException("Could not find customer by Id: [%s]".formatted(customerId));
         }
-        return customer.get();
+        return customer;
     }
 
 
