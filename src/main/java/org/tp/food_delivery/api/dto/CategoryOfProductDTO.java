@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CategoryOfProductDTO {
-    private String categoryName;
-    private MenuDTO menu;
+    Integer categoryOfProductId;
+    String categoryName;
+//     MenuDTO menu;
 }

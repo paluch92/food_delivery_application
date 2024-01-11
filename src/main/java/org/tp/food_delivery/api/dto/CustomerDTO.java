@@ -8,21 +8,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomerDTO {
 
-
-    private String name;
-    private String surname;
+    Integer customerId;
+    String name;
+    String surname;
     @Size
     @Pattern(regexp = "^[+]\\d{2}\\s\\d{3}\\s\\d{3}\\s\\d{3}$")
-    private String phone;
+    String phone;
     @Email
-    private String email;
-    private List<OrderStatusDTO> orderStatus;
+    String email;
+//    AddressDTO address;
+//    OrderStatusDTO orderStatus;
 }

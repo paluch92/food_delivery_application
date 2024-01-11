@@ -7,5 +7,4 @@ import org.tp.food_delivery.infrastuctre.database.entity.CustomerEntity;
 @Repository
 public interface CustomerJpaRepository extends JpaRepository<CustomerEntity, Integer> {
 
-
 }

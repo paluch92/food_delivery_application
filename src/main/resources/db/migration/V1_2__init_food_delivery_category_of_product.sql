@@ -8,7 +8,7 @@ CREATE TABLE category_of_product
 INSERT INTO category_of_product
 (category_name)
 VALUES
-('appetizers'),
-('soups'),
-('main course'),
-('desserts');
+('Appetizers'),
+('Soups'),
+('Main course'),
+('Desserts');

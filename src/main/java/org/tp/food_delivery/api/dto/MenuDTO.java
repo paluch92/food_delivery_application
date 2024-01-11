@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 @Data
 @Builder
@@ -13,8 +13,9 @@ import java.util.List;
 @AllArgsConstructor
 public class MenuDTO {
 
-
-    private String productName;
-    private CategoryOfProductDTO categoryOfProduct;
-    private List<MenuDTO> restaurantMenu;
+    Integer menuId;
+    String productName;
+    BigDecimal price;
+     CategoryOfProductDTO categoryOfProduct;
+     RestaurantDTO restaurantMenu;
 }

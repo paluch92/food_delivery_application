@@ -6,7 +6,7 @@ import lombok.Value;
 
 @Value
 @Builder
-@AllArgsConstructor
+@AllArgsConstructor(staticName = "of")
 public class ExceptionMessage {
 
     String errorId;

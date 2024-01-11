@@ -11,8 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AddressDTO {
 
-    private String country;
-    private String city;
-    private String postalCode;
-    private String street;
+    Integer addressId;
+    String country;
+    String city;
+    String postalCode;
+    String street;
+//    CustomerDTO customer;
+//    RestaurantDTO restaurant;
 }

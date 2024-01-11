@@ -1,19 +1,22 @@
-//package org.tp.food_delivery.buisness.dao;
+package org.tp.food_delivery.buisness.dao;
+
+import org.tp.food_delivery.domain.OrderStatus;
+import org.tp.food_delivery.infrastuctre.database.entity.OrderStatusEntity;
+
+import java.util.Optional;
+import java.util.stream.Stream;
+
+public interface OrderStatusDAO {
+    Optional<OrderStatus> findById(Integer customerId);
+
+//    Stream<OrderStatus> findOrdersInProgress();
 //
-//import org.tp.food_delivery.domain.OrderStatus;
-//
-//import java.util.List;
-//import java.util.Optional;
-//
-//public interface OrderStatusDAO {
-//    Optional<List<OrderStatus>> findById(Integer orderId);
-//
-//    List<List<OrderStatus>> findOrdersInProgress();
-//
-//    List<List<OrderStatus>> findFinishedOrders();
-//
-//
-//    List<OrderStatus> saveOrder(OrderStatus orderStatus);
-//
-//    void deleteOrder(OrderStatus orderStatus);
-//}
+//    Stream<OrderStatus> findFinishedOrders();
+
+    Stream<OrderStatus> findAll();
+
+
+    OrderStatusEntity saveOrder(OrderStatus orderStatus);
+
+    Integer deleteOrder(Integer orderStatus);
+}

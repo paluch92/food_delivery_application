@@ -5,14 +5,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderStatusDTO {
-
-    private RestaurantDTO restaurant;
-    private CustomerDTO customer;
-    private String productName;
-    private String orderStatus;
+    Integer orderStatusId;
+    String productName;
+    BigDecimal quantityOfProduct;
+    OffsetDateTime dateOfOrder;
+    String orderStatus;
+     RestaurantDTO restaurant;
+     CustomerDTO customer;
 }

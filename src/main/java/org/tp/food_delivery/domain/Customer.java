@@ -2,8 +2,6 @@ package org.tp.food_delivery.domain;
 
 import lombok.*;
 
-import java.util.List;
-
 @With
 @Value
 @Builder
@@ -17,5 +15,5 @@ public class Customer {
     String phone;
     String email;
     Address address;
-    List<OrderStatus> orderStatus;
+    OrderStatus orderStatus;
 }

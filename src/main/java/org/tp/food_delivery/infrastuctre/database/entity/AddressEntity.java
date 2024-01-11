@@ -6,7 +6,7 @@ import lombok.*;
 @Getter
 @Setter
 @EqualsAndHashCode(of = "addressId")
-@ToString(of = {"addressId", "country", "city", "postalCode", "address"})
+@ToString(of = {"addressId", "country", "city", "postalCode", "street"})
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,12 +23,12 @@ public class AddressEntity {
     private String city;
     @Column(name = "postal_code")
     private String postalCode;
-    @Column(name = "address")
-    private String address;
+    @Column(name = "street")
+    private String street;
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "address")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "address")
     private RestaurantEntity restaurant;
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "address")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "address")
     private CustomerEntity customer;
 
 }

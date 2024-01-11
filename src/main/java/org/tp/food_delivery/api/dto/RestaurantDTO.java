@@ -8,22 +8,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class RestaurantDTO {
 
-    private String restaurantName;
-    private String address;
-    private String menu;
-    private List<AddressDTO> availableStreets;
+    Integer restaurantId;
+    String restaurantName;
+    String availableStreets;
     @Size
     @Pattern(regexp = "^[+]\\d{2}\\s\\d{3}\\s\\d{3}\\s\\d{3}$")
-    private String phone;
+    String phone;
     @Email
-    private String email;
-    private List<OrderStatusDTO> orderStatus;
+    String email;
+     AddressDTO address;
+     MenuDTO menu;
 }

@@ -4,8 +4,6 @@ DROP TABLE IF EXISTS customer CASCADE;
 DROP TABLE IF EXISTS menu CASCADE;
 DROP TABLE IF EXISTS order_status CASCADE;
 DROP TABLE IF EXISTS category_of_product CASCADE;
-DROP TABLE IF EXISTS all_restaurants CASCADE;
-DROP TABLE IF EXISTS available_restaurants CASCADE;
 
 
 CREATE TABLE address
@@ -14,7 +12,7 @@ CREATE TABLE address
     country     VARCHAR(32) NOT NULL,
     city        VARCHAR(32) NOT NULL,
     postal_code VARCHAR(32) NOT NULL,
-    street     VARCHAR(32) NOT NULL,
+    address     VARCHAR(32) NOT NULL,
     PRIMARY KEY (address_id)
 );
 CREATE TABLE category_of_product

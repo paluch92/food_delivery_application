@@ -1,55 +1,46 @@
 package org.tp.food_delivery.buisness;
 
 import lombok.AllArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.tp.food_delivery.api.dto.RestaurantDTO;
-import org.tp.food_delivery.infrastuctre.database.entity.RestaurantEntity;
-import org.tp.food_delivery.infrastuctre.database.repository.jpa.RestaurantJpaRepository;
+import org.tp.food_delivery.buisness.dao.RestaurantDAO;
+import org.tp.food_delivery.domain.Restaurant;
+import org.tp.food_delivery.infrastuctre.database.repository.mapper.RestaurantEntityMapper;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class RestaurantService {
 
 
-    private final RestaurantJpaRepository restaurantJpaRepository;
-    private final ModelMapper modelMapper;
+    private final RestaurantDAO restaurantDAO;
+    private final RestaurantEntityMapper restaurantEntityMapper;
 
     @Transactional
-    public RestaurantDTO createRestaurant(RestaurantDTO restaurantDTO) {
-        RestaurantEntity restaurant = convertToEntity(restaurantDTO);
-        RestaurantEntity createdRestaurant = restaurantJpaRepository.save(restaurant);
-        return convertToDto(createdRestaurant);
+    public void saveRestaurant(Restaurant restaurant) {
+        restaurantDAO.saveRestaurant(restaurant);
     }
 
-    public List<RestaurantDTO> getAllRestaurants() {
-        List<RestaurantEntity> restaurantEntity = restaurantJpaRepository.findAll();
-        return restaurantEntity.stream()
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
+    public List<Restaurant> findAll() {
+        return restaurantDAO.findAll();
     }
 
-    private RestaurantDTO convertToDto(RestaurantEntity restaurantEntity) {
-        return modelMapper.map(restaurantEntity, RestaurantDTO.class);
+
+    public Optional<Restaurant> findById(Integer restaurantId) {
+//        Optional<Restaurant> restaurant = restaurantDAO.findById(restaurantId);
+//        if (restaurant.isEmpty()) {
+//            throw new NotFoundException("Could not find restaurant by Id: [%s]".formatted(restaurantId));
+//        }
+        return restaurantDAO.findById(restaurantId);
     }
 
-    private RestaurantEntity convertToEntity(RestaurantDTO restaurantDTO) {
-        return modelMapper.map(restaurantDTO, RestaurantEntity.class);
-    }
-
-    @Transactional
-    void deleteRestaurant(RestaurantEntity restaurantId) {
-        restaurantJpaRepository.delete(restaurantId);
-    }
-
-    @Transactional
-    public RestaurantDTO findRestaurant(Integer restaurantId) {
-        RestaurantEntity restaurantEntity = restaurantJpaRepository.findById(restaurantId).orElse(null);
-        return (restaurantEntity != null ? convertToDto(restaurantEntity) : null);
-    }
+//    public List<Restaurant> showAvailableByStreet(Address street) {
+//        return restaurantDAO.findAll().stream()
+//                .filter(restaurantEntity -> restaurantEntity.getAddress().equals(street))
+//                .map()
+//                .toList();
+//    }
 
 }
