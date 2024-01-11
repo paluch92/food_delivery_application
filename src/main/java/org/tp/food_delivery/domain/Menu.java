@@ -8,12 +8,12 @@ import java.math.BigDecimal;
 @Value
 @Builder
 @EqualsAndHashCode(of = "menuId")
-@ToString(of = {"menuId", "productName", "price", "restaurantMenu"})
+@ToString(of = {"menuId", "productName", "price"})
 public class Menu {
 
     Integer menuId;
     String productName;
     BigDecimal price;
     CategoryOfProduct categoryOfProduct;
-    Menu restaurantMenu;
+//    Menu restaurantMenu;
 }

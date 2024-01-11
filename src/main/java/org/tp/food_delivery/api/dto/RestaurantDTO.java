@@ -22,6 +22,6 @@ public class RestaurantDTO {
     String phone;
     @Email
     String email;
-     AddressDTO address;
-     MenuDTO menu;
+    AddressDTO address;
+//     MenuDTO menu;
 }

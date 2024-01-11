@@ -4,15 +4,11 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.tp.food_delivery.api.dto.AddressDTO;
 import org.tp.food_delivery.api.dto.CustomerDTO;
-import org.tp.food_delivery.api.dto.mapper.MenuMapper;
 import org.tp.food_delivery.api.dto.mapper.CustomerMapper;
+import org.tp.food_delivery.api.dto.mapper.MenuMapper;
 import org.tp.food_delivery.buisness.CustomerService;
-import org.tp.food_delivery.domain.Customer;
 
 @Controller
 @AllArgsConstructor

@@ -18,6 +18,6 @@ public class OrderStatusDTO {
     BigDecimal quantityOfProduct;
     OffsetDateTime dateOfOrder;
     String orderStatus;
-     RestaurantDTO restaurant;
-     CustomerDTO customer;
+    RestaurantDTO restaurant;
+    CustomerDTO customer;
 }

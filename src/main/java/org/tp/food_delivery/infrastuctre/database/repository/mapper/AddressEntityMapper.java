@@ -1,7 +1,6 @@
 package org.tp.food_delivery.infrastuctre.database.repository.mapper;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import org.tp.food_delivery.domain.Address;
 import org.tp.food_delivery.infrastuctre.database.entity.AddressEntity;
@@ -10,7 +9,7 @@ import org.tp.food_delivery.infrastuctre.database.entity.AddressEntity;
 public interface AddressEntityMapper {
     AddressEntity mapToEntity(Address address);
 
-    @Mapping(target = "customer", ignore = true)
-    @Mapping(target = "restaurant", ignore = true)
+    //    @Mapping(target = "customer", ignore = true)
+//    @Mapping(target = "restaurant", ignore = true)
     Address mapFromEntity(AddressEntity entity);
 }

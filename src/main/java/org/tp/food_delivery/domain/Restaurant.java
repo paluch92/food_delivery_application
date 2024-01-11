@@ -7,7 +7,7 @@ import lombok.*;
 @Builder
 @Setter
 @EqualsAndHashCode(of = "restaurantId")
-@ToString(of = {"restaurantId", "restaurantName", "address", "menu", "phone", "email"})
+@ToString(of = {"restaurantId", "restaurantName", "address", "phone", "email"})
 public class Restaurant {
 
     Integer restaurantId;
@@ -16,7 +16,7 @@ public class Restaurant {
     String phone;
     String email;
     Address address;
-    Menu menu;
+//    Menu menu;
 
 
 }

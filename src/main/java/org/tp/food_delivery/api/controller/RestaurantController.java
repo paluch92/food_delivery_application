@@ -9,8 +9,8 @@ import org.tp.food_delivery.api.dto.AddressDTO;
 import org.tp.food_delivery.api.dto.RestaurantDTO;
 import org.tp.food_delivery.api.dto.mapper.MenuMapper;
 import org.tp.food_delivery.api.dto.mapper.RestaurantMapper;
+import org.tp.food_delivery.buisness.MenuService;
 import org.tp.food_delivery.buisness.RestaurantService;
-import org.tp.food_delivery.domain.Restaurant;
 
 @Controller
 @AllArgsConstructor
@@ -20,6 +20,7 @@ public class RestaurantController {
     private static final String RESTAURANT_BY_ID = "/restaurants/{restaurantId}";
 
     private final RestaurantService restaurantService;
+    private final MenuService menuService;
     private final RestaurantMapper restaurantMapper;
     private final MenuMapper menuMapper;
 
@@ -37,15 +38,15 @@ public class RestaurantController {
         RestaurantDTO restaurant = restaurantService.findById(restaurantId).map(restaurantMapper::map)
                 .orElseThrow(() -> new RuntimeException("Restaurant with Id [%s] doesn't exists".formatted(restaurantId)));
 
-        var menu = restaurantService.findById(restaurantId).map(Restaurant::getMenu)
-                .map(menuMapper::map)
-                .orElseThrow(() -> new RuntimeException("Menu in Restaurant with Id [%s] doesn't exists".formatted(restaurantId)));
+//        var menu = menuService.findById(restaurantId).map(Menu::getMenu)
+//                .map(menuMapper::map)
+//                .orElseThrow(() -> new RuntimeException("Menu in Restaurant with Id [%s] doesn't exists".formatted(restaurantId)));
         AddressDTO address = restaurant.getAddress();
 
 
         model.addAttribute("restaurant", restaurant);
         model.addAttribute("address", address);
-        model.addAttribute("menu", menu);
+//        model.addAttribute("menu", menu);
         return "restaurantDetails";
     }
 }

@@ -14,6 +14,6 @@ public class Address {
     String city;
     String postalCode;
     String street;
-    Customer customer;
-    Restaurant restaurant;
+//    Customer customer;
+//    Restaurant restaurant;
 }

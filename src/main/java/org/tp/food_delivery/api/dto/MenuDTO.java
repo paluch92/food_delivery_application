@@ -16,6 +16,6 @@ public class MenuDTO {
     Integer menuId;
     String productName;
     BigDecimal price;
-     CategoryOfProductDTO categoryOfProduct;
-     RestaurantDTO restaurantMenu;
+    CategoryOfProductDTO categoryOfProduct;
+//     RestaurantDTO restaurantMenu;
 }
